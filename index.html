@@ -6,11 +6,12 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font: 14px Helvetica, Arial;
+            background-color:#00bff3;
         }
         .wrapper {
             width: 40%;
             height: 430px;
-            margin: 70px 0px 0px 535px;
+            margin: 185px 0px 0px 535px;
             position: absolute;
             -webkit-box-shadow: 16px 23px 35px 1px rgba(0,0,0,0.75);
             -moz-box-shadow: 16px 23px 35px 1px rgba(0,0,0,0.75);
@@ -73,7 +74,9 @@
             box-shadow: 1px 1px 12px -3px rgba(0,0,0,0.75);
             max-width: 65%;
         }
-        #messages { list-style-type: none; margin-left:10px;}
+        #messages {
+            list-style-type: none;
+            margin-left:10px;}
         #status {
             width:100%;
             height: 35px;
@@ -102,6 +105,13 @@
             height: 62px;
             border-top: 2px solid #EEEEEE;
             margin: 281px 0px 0px 0px;
+        }
+        #users-online {
+            list-style-type: none;
+            margin: 70px 0px 0px 7%;
+        }
+        #listUserOnline{
+
         }
     </style>
 </head>
@@ -164,12 +174,18 @@
 
     window.onload = function(){
         $("#user-name").html(name);
-    }
+        socket.emit('user connected', name);
+    };
+
+    socket.on('user connected',function(name){
+        $('#users-online').append($('<li>').append($('#listUserOnline').html()).append($('<b>').text(name).append($('</b>'))));
+    });
 </script>
 <body>
 <div class="wrapper">
     <div class="onlineUsers">
         <input id = "searchUser">
+        <ul id="users-online"></ul>
     </div>
     <div class="chatbox">
         <div id="chat-header">
