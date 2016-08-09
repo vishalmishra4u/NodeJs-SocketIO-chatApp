@@ -4,45 +4,64 @@
     <title>Socket.IO chat</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font: 14px Helvetica, Arial; }
-        .chatbox {  border: 1px solid #998877;
-            margin:50px 0px 0px 423px;
+        body {
+            font: 14px Helvetica, Arial;
+        }
+        .wrapper {
+            width: 40%;
+            height: 430px;
+            margin: 70px 0px 0px 535px;
+            position: absolute;
+            -webkit-box-shadow: 16px 23px 35px 1px rgba(0,0,0,0.75);
+            -moz-box-shadow: 16px 23px 35px 1px rgba(0,0,0,0.75);
+            box-shadow: 16px 23px 35px 1px rgba(0,0,0,0.75);
+            border-radius: 8px;
+        }
+        .chatbox {
+            border: 1px solid #998877;
+            border-radius: 0px 8px 8px 0px;
+            position: absolute;
+            margin: 0px 0px 0px 40%;
             width: 450px;
-            height:400px;
-            border-bottom : 0px;
-            background-color: #EEEEEE;
-            overflow-y: scroll;
+            height: 430px;
+            background-color: #FFFFFF;
             word-break: break-all;
-            -webkit-box-shadow: 10px 31px 130px 9px rgba(0,0,0,0.75);
-            -moz-box-shadow: 10px 31px 130px 9px rgba(0,0,0,0.75);
-            box-shadow: 10px 31px 130px 9px rgba(0,0,0,0.75);
         }
         #chat-header {
-            width:100%;
-            height: 40px;
+            border-radius: 8px;
+            width: 95%;
+            height: 42px;
             background-color: #C03B36;
-            padding:7px 0 0 16px;
+            padding: 7px 0 0 16px;
+            margin: 8px 0px 0px 11px;
         }
         #user-name{
             float:left;
             font-size : 21px;
             color : #ffffff;
         }
-        #chat-options{
-            float:right;
-            width:5%;
-            height:30px;
-            margin:0 15px 0 0;
-            background-color:#ffffff;
-        }
+        /*#chat-options{*/
+            /*float:right;*/
+            /*width:5%;*/
+            /*height:30px;*/
+            /*margin:0 15px 0 0;*/
+            /*background-color:#ffffff;*/
+        /*}*/
         input {
-            margin-left:423px;
-            width:400px;
-            height: 30px;
+            margin: 14px 0 0 11px;
+            width: 81%;
+            height: 34px;
+            position: absolute;
+            border-radius: 8px;
+            padding: 5px 10px 5px 10px;
+            outline: none;
         }
         button {
             height: 30px;
-            width:50px
+            width: 59px;
+            margin: 14px 0 0 85%;
+            position: absolute;
+            border-radius: 8px;
         }
         .bubble li{
             border-radius: 10px;
@@ -59,6 +78,30 @@
             width:100%;
             height: 35px;
             padding: 7px 0 0 10px;
+        }
+        .onlineUsers{
+            border: 1px solid #998877;
+            float: left;
+            width: 300px;
+            height: 430px;
+            background-color: #EDEDED;
+            position: absolute;
+            border-radius: 8px 0px 0px 8px;
+        }
+        #searchUser{
+            position: absolute;
+            width: 262px;
+            height: 35px;
+            margin: 12px 0px 0px 6%;
+            border-radius: 8px;
+            padding: 5px 10px 5px 10px;
+            outline:none;
+        }
+        .input-msg{
+            width: 100%;
+            height: 62px;
+            border-top: 2px solid #EEEEEE;
+            margin: 281px 0px 0px 0px;
         }
     </style>
 </head>
@@ -124,14 +167,21 @@
     }
 </script>
 <body>
-<div class="chatbox">
-    <div id="chat-header">
-        <div id="user-name"></div>
-        <div id="chat-options"></div>
+<div class="wrapper">
+    <div class="onlineUsers">
+        <input id = "searchUser">
     </div>
-    <ul id="status"></ul>
-    <ul id="messages" class="bubble"></ul>
+    <div class="chatbox">
+        <div id="chat-header">
+            <div id="user-name"></div>
+            <div id="chat-options"></div>
+        </div>
+        <ul id="status"></ul>
+        <ul id="messages" class="bubble"></ul>
+        <div class="input-msg">
+            <input id="msg" autocomplete="off" onkeypress = "isUserTyping()"/><button id="send" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
 </div>
-<input id="msg" autocomplete="off" onkeypress = "isUserTyping()"/><button id="send" onclick="sendMessage()">Send</button>
 </body>
 </html>
