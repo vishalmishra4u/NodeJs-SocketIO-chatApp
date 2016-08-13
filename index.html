@@ -9,9 +9,10 @@
             background-color:#00bff3;
         }
         .wrapper {
-            width: 40%;
+            width: 748px;
             height: 430px;
-            margin: 185px 0px 0px 535px;
+            margin:auto;
+            /*margin: 185px 0px 0px 535px;*/
             position: absolute;
             -webkit-box-shadow: 16px 23px 35px 1px rgba(0,0,0,0.75);
             -moz-box-shadow: 16px 23px 35px 1px rgba(0,0,0,0.75);
@@ -111,7 +112,8 @@
             margin: 70px 0px 0px 7%;
         }
         #listUserOnline{
-
+            width: 262px;
+            height:70px;
         }
     </style>
 </head>
@@ -198,6 +200,9 @@
             <input id="msg" autocomplete="off" onkeypress = "isUserTyping()"/><button id="send" onclick="sendMessage()">Send</button>
         </div>
     </div>
+</div>
+<div id="listUserOnline">
+    <img src="User-icon.png" style="width:40px; height:40px">
 </div>
 </body>
 </html>
